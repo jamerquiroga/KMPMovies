@@ -1,0 +1,97 @@
+*.iml
+.kotlin
+.gradle
+**/build/
+xcuserdata
+!src/**/build/
+local.properties
+.idea
+.DS_Store
+captures
+.externalNativeBuild
+.cxx
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+node_modules/
+
+# Kotlin / Gradle
+.gradle/
+build/
+**/build/
+
+# Local configuration
+local.properties
+*.keystore
+*.jks
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# MacOS
+.DS_Store
+
+# Logs
+*.log
+
+# Kotlin Native
+.kotlin/
+konan/
+
+# KMP generated files
+shared/build/
+iosApp/build/
+
+# Android
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Jetpack Compose
+compose_compiler/
+
+# Firebase / Google Services (si aplica)
+google-services.json
+GoogleService-Info.plist
+
+# Xcode / iOS
+iosApp/.gradle/
+iosApp/build/
+iosApp/Pods/
+iosApp/.symlinks/
+iosApp/DerivedData/
+iosApp/*.xcworkspace
+
+# CocoaPods
+Podfile.lock
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# Environment files
+.env
+.env.*
+
+# Kover / Detekt / Ktlint
+.kover/
+detekt/
+reports/
+
+# Generated files
+*.class
+*.apk
+*.aab
+*.ipa
+
+# Temporary files
+tmp/
+temp/
