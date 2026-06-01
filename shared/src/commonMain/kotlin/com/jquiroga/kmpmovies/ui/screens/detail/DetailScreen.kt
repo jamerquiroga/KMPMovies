@@ -17,28 +17,23 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.jquiroga.kmpmovies.movies
+import com.jquiroga.kmpmovies.Movie
 import com.jquiroga.kmpmovies.ui.screens.Screen
 import kmpmovies.shared.generated.resources.Res
 import kmpmovies.shared.generated.resources.back
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-@Preview
-fun DetailScreen() {
-    val movie = movies[0]
+fun DetailScreen(movie: Movie, onBack: () -> Unit) {
     Screen {
-        Scaffold (
+        Scaffold(
             topBar = {
                 TopAppBar(
                     title = { Text(movie.title) },
                     navigationIcon = {
-                        IconButton(
-                            onClick = {}
-                        ) {
+                        IconButton(onClick = onBack) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = stringResource(Res.string.back)
@@ -48,7 +43,7 @@ fun DetailScreen() {
                 )
             }
         ) { paddingValues ->
-            Column (
+            Column(
                 modifier = Modifier
                     .padding(paddingValues)
                     .verticalScroll(rememberScrollState())
@@ -59,7 +54,7 @@ fun DetailScreen() {
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .aspectRatio(16f/9f)
+                        .aspectRatio(16f / 9f)
                 )
                 Text(
                     text = movie.title,

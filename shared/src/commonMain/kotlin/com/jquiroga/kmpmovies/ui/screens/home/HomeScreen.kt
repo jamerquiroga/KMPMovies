@@ -1,5 +1,6 @@
 package com.jquiroga.kmpmovies.ui.screens.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -29,7 +30,7 @@ import kmpmovies.shared.generated.resources.app_name
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onMovieClick: (Movie) -> Unit) {
     Screen {
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
         Scaffold(
@@ -51,7 +52,7 @@ fun HomeScreen() {
                 modifier = Modifier.padding(paddingValues)
             ) {
                 items(movies, key = { it.id }) {
-                    Movie(movie = it)
+                    MovieItem(movie = it, onMovieClick = { onMovieClick(it) })
                 }
             }
         }
@@ -59,8 +60,8 @@ fun HomeScreen() {
 }
 
 @Composable
-fun Movie(movie: Movie) {
-    Column {
+fun MovieItem(movie: Movie, onMovieClick: () -> Unit) {
+    Column(modifier = Modifier.clickable(onClick = onMovieClick)) {
         AsyncImage(
             model = movie.poster,
             contentDescription = movie.title,
