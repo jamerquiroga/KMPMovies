@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.jquiroga.kmpmovies.Movie
+import com.jquiroga.kmpmovies.data.Movie
 import com.jquiroga.kmpmovies.ui.screens.Screen
 import kmpmovies.shared.generated.resources.Res
 import kmpmovies.shared.generated.resources.back

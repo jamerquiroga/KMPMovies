@@ -55,6 +55,8 @@ kotlin {
             implementation(libs.coil.compose)
             implementation(libs.coil.network.ktor3)
             implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.json)
             implementation(libs.material.icons.extended)
             implementation(libs.navigation.compose)
             implementation(libs.kotlinx.serialization.json)

@@ -5,12 +5,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jquiroga.kmpmovies.Movie
-import com.jquiroga.kmpmovies.movies
+import com.jquiroga.kmpmovies.data.Movie
+import com.jquiroga.kmpmovies.data.MovieService
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class HomeViewModel: ViewModel() {
+class HomeViewModel(
+    private val movieService: MovieService
+) : ViewModel() {
 
     var state by mutableStateOf(UiState())
         private set
@@ -19,6 +21,14 @@ class HomeViewModel: ViewModel() {
         viewModelScope.launch {
             state = UiState(loading = true)
             delay(1000L)
+            val movies = movieService.getPopularMovies().results.map {
+                Movie(
+                    id = it.id,
+                    title = it.title,
+                    poster = "https://image.tmdb.org/t/p/w500/${it.posterPath.orEmpty()}",
+                    overview = it.overview
+                )
+            }
             state = UiState(loading = false, movies = movies)
         }
     }

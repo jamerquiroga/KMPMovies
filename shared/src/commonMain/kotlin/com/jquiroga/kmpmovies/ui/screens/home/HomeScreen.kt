@@ -25,10 +25,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
-import com.jquiroga.kmpmovies.Movie
-import com.jquiroga.kmpmovies.movies
+import com.jquiroga.kmpmovies.data.Movie
 import com.jquiroga.kmpmovies.ui.screens.Screen
 import kmpmovies.shared.generated.resources.Res
 import kmpmovies.shared.generated.resources.app_name
@@ -37,7 +35,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun HomeScreen(
     onMovieClick: (Movie) -> Unit,
-    viewModel: HomeViewModel = viewModel { HomeViewModel() }
+    viewModel: HomeViewModel
 ) {
     Screen {
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()

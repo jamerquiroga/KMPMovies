@@ -1,9 +1,10 @@
-package com.jquiroga.kmpmovies
+package com.jquiroga.kmpmovies.data
 
 data class Movie(
     val id: Int,
     val title: String,
-    val poster: String
+    val poster: String,
+    val overview: String = ""
 )
 
 val movies = (1..100).map {
