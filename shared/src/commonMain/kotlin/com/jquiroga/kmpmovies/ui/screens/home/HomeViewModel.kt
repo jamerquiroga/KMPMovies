@@ -6,12 +6,12 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jquiroga.kmpmovies.data.Movie
-import com.jquiroga.kmpmovies.data.MovieService
+import com.jquiroga.kmpmovies.data.MovieRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val movieService: MovieService
+    private val movieRepository: MovieRepository
 ) : ViewModel() {
 
     var state by mutableStateOf(UiState())
@@ -21,7 +21,7 @@ class HomeViewModel(
         viewModelScope.launch {
             state = UiState(loading = true)
             delay(1000L)
-            val movies = movieService.getPopularMovies().results.map {
+            val movies = movieRepository.getPopularMovies().results.map {
                 Movie(
                     id = it.id,
                     title = it.title,
