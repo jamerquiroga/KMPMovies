@@ -7,4 +7,8 @@ class MovieRepository(
     suspend fun getPopularMovies(): MovieResultDto {
         return movieService.getPopularMovies()
     }
+
+    suspend fun getMovieById(id: Int): MovieDetailDto {
+        return movieService.getMovieById(id)
+    }
 }

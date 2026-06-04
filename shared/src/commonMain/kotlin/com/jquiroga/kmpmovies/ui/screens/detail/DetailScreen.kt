@@ -19,19 +19,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.jquiroga.kmpmovies.data.Movie
+import com.jquiroga.kmpmovies.ui.commom.LoadingIndicator
 import com.jquiroga.kmpmovies.ui.screens.Screen
 import kmpmovies.shared.generated.resources.Res
 import kmpmovies.shared.generated.resources.back
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun DetailScreen(movie: Movie, onBack: () -> Unit) {
+fun DetailScreen(viewModel: DetailViewModel, onBack: () -> Unit) {
+    val state = viewModel.state
+
     Screen {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(movie.title) },
+                    title = { Text(state.movieDetail.title) },
                     navigationIcon = {
                         IconButton(onClick = onBack) {
                             Icon(
@@ -43,21 +45,24 @@ fun DetailScreen(movie: Movie, onBack: () -> Unit) {
                 )
             }
         ) { paddingValues ->
+
+            LoadingIndicator(enable = state.loading)
+
             Column(
                 modifier = Modifier
                     .padding(paddingValues)
                     .verticalScroll(rememberScrollState())
             ) {
                 AsyncImage(
-                    model = movie.poster,
-                    contentDescription = movie.title,
+                    model = state.movieDetail.backdropPath,
+                    contentDescription = state.movieDetail.title,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
                         .aspectRatio(16f / 9f)
                 )
                 Text(
-                    text = movie.title,
+                    text = state.movieDetail.overview,
                     modifier = Modifier.padding(16.dp),
                     style = MaterialTheme.typography.headlineMedium
                 )

@@ -13,4 +13,10 @@ class MovieService(
             .get("/movie/popular")
             .body<MovieResultDto>()
     }
+
+    suspend fun getMovieById(id: Int): MovieDetailDto {
+        return client
+            .get("/movie/$id")
+            .body<MovieDetailDto>()
+    }
 }

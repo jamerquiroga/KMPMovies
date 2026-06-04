@@ -25,8 +25,7 @@ class HomeViewModel(
                 Movie(
                     id = it.id,
                     title = it.title,
-                    poster = "https://image.tmdb.org/t/p/w500/${it.posterPath.orEmpty()}",
-                    overview = it.overview
+                    poster = "https://image.tmdb.org/t/p/w500/${it.posterPath.orEmpty()}"
                 )
             }
             state = UiState(loading = false, movies = movies)
