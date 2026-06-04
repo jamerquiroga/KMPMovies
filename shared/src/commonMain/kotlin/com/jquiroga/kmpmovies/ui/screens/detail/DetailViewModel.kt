@@ -25,7 +25,12 @@ class DetailViewModel(
                 movieDetail = MovieDetail(
                     title = movieDetail.title,
                     overview = movieDetail.overview,
-                    backdropPath = "https://image.tmdb.org/t/p/w500/${movieDetail.backdropPath.orEmpty()}"
+                    backdropPath = "https://image.tmdb.org/t/p/w500/${movieDetail.backdropPath.orEmpty()}",
+                    releaseDate = movieDetail.releaseDate,
+                    originalTitle = movieDetail.originalTitle,
+                    originalLanguage = movieDetail.originalLanguage,
+                    popularity = movieDetail.popularity,
+                    voteAverage = movieDetail.voteAverage
                 )
             )
         }
