@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jquiroga.kmpmovies.data.Movie
 import com.jquiroga.kmpmovies.data.MovieRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -20,15 +19,20 @@ class HomeViewModel(
     init {
         viewModelScope.launch {
             state = UiState(loading = true)
-            delay(1000L)
-            val movies = movieRepository.getPopularMovies().results.map {
-                Movie(
-                    id = it.id,
-                    title = it.title,
-                    poster = "https://image.tmdb.org/t/p/w500/${it.posterPath.orEmpty()}"
-                )
+            movieRepository.movies.collect {
+                if (it.isNotEmpty()) {
+                    val mappedData = it.map { movie ->
+                        Movie(
+                            id = movie.id,
+                            title = movie.title,
+                            poster = "https://image.tmdb.org/t/p/w500/${movie.posterPath}"
+                        )
+                    }
+                    state = UiState(loading = false, movies = mappedData)
+                } else {
+                    state = UiState(loading = false)
+                }
             }
-            state = UiState(loading = false, movies = movies)
         }
     }
 
