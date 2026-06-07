@@ -21,6 +21,7 @@ kotlinxSerialization = "1.11.0"
 ksp = "2.3.9"
 room = "2.8.4"
 roomSqliteBundled = "2.6.2"
+buildConfig = "6.0.10"
 
 [libraries]
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilNetworkKtor3" }
@@ -63,3 +64,4 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
+buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig" }

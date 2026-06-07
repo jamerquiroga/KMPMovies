@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -8,6 +9,7 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.buildConfig)
 }
 
 kotlin {
@@ -75,6 +77,16 @@ kotlin {
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+buildConfig {
+    packageName("com.jquiroga.kmpmovies")
+
+    val properties = Properties()
+    properties.load(project.rootProject.file("local.properties").reader())
+    val apiKey = properties.getProperty("API_KEY")
+
+    buildConfigField("API_KEY", apiKey)
 }
 
 dependencies {
