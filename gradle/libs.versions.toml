@@ -18,6 +18,9 @@ material3 = "1.11.0-alpha07"
 materialIconsExtended = "1.7.3"
 navigationCompose = "2.9.2"
 kotlinxSerialization = "1.11.0"
+ksp = "2.3.9"
+room = "2.8.4"
+roomSqliteBundled = "2.6.2"
 
 [libraries]
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilNetworkKtor3" }
@@ -47,6 +50,9 @@ ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", 
 material-icons-extended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "roomSqliteBundled" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -55,3 +61,5 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMul
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }
