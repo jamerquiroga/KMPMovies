@@ -22,6 +22,7 @@ ksp = "2.3.9"
 room = "2.8.4"
 roomSqliteBundled = "2.6.2"
 buildConfig = "6.0.10"
+koin = "4.2.1"
 
 [libraries]
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilNetworkKtor3" }
@@ -54,6 +55,11 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "roomSqliteBundled" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin"}
+koin-android = { group = "io.insert-koin", name = "koin-android"}
+koin-core = { group = "io.insert-koin", name = "koin-core"}
+koin-compose = { group = "io.insert-koin", name = "koin-compose"}
+koin-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
