@@ -28,11 +28,12 @@ import com.jquiroga.kmpmovies.ui.screens.Screen
 import kmpmovies.shared.generated.resources.Res
 import kmpmovies.shared.generated.resources.app_name
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun HomeScreen(
     onMovieClick: (Movie) -> Unit,
-    viewModel: HomeViewModel
+    viewModel: HomeViewModel = koinViewModel()
 ) {
     val state = viewModel.state
 

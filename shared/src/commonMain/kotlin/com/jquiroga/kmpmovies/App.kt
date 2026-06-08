@@ -10,7 +10,7 @@ import com.jquiroga.kmpmovies.ui.screens.Navigation
 
 
 @Composable
-fun App(moviesDao: MoviesDao) {
+fun App() {
     setSingletonImageLoaderFactory { context ->
         ImageLoader.Builder(context)
             .crossfade(true)
@@ -18,5 +18,5 @@ fun App(moviesDao: MoviesDao) {
             .build()
     }
 
-    Navigation(moviesDao)
+    Navigation()
 }
