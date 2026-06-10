@@ -7,18 +7,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jquiroga.kmpmovies.data.Movie
 import com.jquiroga.kmpmovies.data.MovieRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
 
-    var state by mutableStateOf(UiState())
-        private set
+    private val _state = MutableStateFlow(UiState())
+    val state: StateFlow<UiState> = _state.asStateFlow()
 
     fun onUiReady() {
         viewModelScope.launch {
-            state = UiState(loading = true)
+            _state.value = UiState(loading = true)
             movieRepository.movies.collect {
                 if (it.isNotEmpty()) {
                     val mappedData = it.map { movie ->
@@ -28,9 +31,9 @@ class HomeViewModel(
                             poster = "https://image.tmdb.org/t/p/w500/${movie.posterPath}"
                         )
                     }
-                    state = UiState(loading = false, movies = mappedData)
+                    _state.value = UiState(loading = false, movies = mappedData)
                 } else {
-                    state = UiState(loading = false)
+                    _state.value = UiState(loading = false)
                 }
             }
         }

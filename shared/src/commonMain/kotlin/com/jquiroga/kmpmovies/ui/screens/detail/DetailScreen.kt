@@ -18,6 +18,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.AnnotatedString
@@ -40,10 +41,11 @@ import kmpmovies.shared.generated.resources.popularity
 import kmpmovies.shared.generated.resources.release_date
 import kmpmovies.shared.generated.resources.vote_average
 import org.jetbrains.compose.resources.stringResource
+import androidx.compose.runtime.getValue
 
 @Composable
 fun DetailScreen(viewModel: DetailViewModel, onBack: () -> Unit) {
-    val state = viewModel.state
+    val state by viewModel.state.collectAsState()
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
     Screen {

@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jquiroga.kmpmovies.data.MovieDetail
 import com.jquiroga.kmpmovies.data.MovieRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class DetailViewModel(
@@ -14,13 +17,14 @@ class DetailViewModel(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
 
-    var state by mutableStateOf(UiState())
+    private val _state = MutableStateFlow(UiState())
+    val state: StateFlow<UiState> = _state.asStateFlow()
 
     init {
         viewModelScope.launch {
-            state = UiState(loading = true)
+            _state.value = UiState(loading = true)
             val movieDetail = movieRepository.getMovieById(movieId)
-            state = UiState(
+            _state.value = UiState(
                 loading = false,
                 movieDetail = MovieDetail(
                     title = movieDetail.title,
