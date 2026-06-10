@@ -6,12 +6,15 @@ import kotlinx.coroutines.flow.onEach
 
 class MovieRepository(
     private val movieService: MovieService,
-    private val moviesDao: MoviesDao
+    private val moviesDao: MoviesDao,
+    private val regionRepository: RegionRepository
 ) {
 
     val movies = moviesDao.fetchPopularMovies().onEach { movies ->
         if (movies.isEmpty()) {
-            val popularMovies = movieService.getPopularMovies().results.map {
+            val popularMovies = movieService.getPopularMovies(
+                region = regionRepository.fetchRegion()
+            ).results.map {
                 MovieEntity(
                     id = it.id,
                     title = it.title,

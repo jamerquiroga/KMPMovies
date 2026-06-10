@@ -43,6 +43,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.play.services.location)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -70,6 +71,8 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.viewmodel)
+            implementation(libs.moko.permissions)
+            implementation(libs.moko.permissions.location)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

@@ -23,6 +23,8 @@ room = "2.8.4"
 roomSqliteBundled = "2.6.2"
 buildConfig = "6.0.10"
 koin = "4.2.1"
+moko-permissions = "0.20.1"
+playServicesLocation = "21.3.0"
 
 [libraries]
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilNetworkKtor3" }
@@ -60,6 +62,9 @@ koin-android = { group = "io.insert-koin", name = "koin-android"}
 koin-core = { group = "io.insert-koin", name = "koin-core"}
 koin-compose = { group = "io.insert-koin", name = "koin-compose"}
 koin-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel"}
+moko-permissions = { group = "dev.icerock.moko", name = "permissions-compose", version.ref = "moko-permissions" }
+moko-permissions-location = { group = "dev.icerock.moko", name = "permissions-location", version.ref = "moko-permissions" }
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -4,6 +4,7 @@ import androidx.room.RoomDatabase
 import com.jquiroga.kmpmovies.BuildConfig
 import com.jquiroga.kmpmovies.data.MovieRepository
 import com.jquiroga.kmpmovies.data.MovieService
+import com.jquiroga.kmpmovies.data.RegionRepository
 import com.jquiroga.kmpmovies.data.database.MoviesDao
 import com.jquiroga.kmpmovies.data.database.MoviesDataBase
 import com.jquiroga.kmpmovies.ui.screens.detail.DetailViewModel
@@ -16,7 +17,6 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
-import org.koin.core.logger.Level
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.core.qualifier.named
@@ -34,6 +34,7 @@ val appModule = module {
 
 val dataModule = module {
     factoryOf(::MovieRepository)
+    factoryOf(::RegionRepository)
     factoryOf(::MovieService)
     single {
         HttpClient {

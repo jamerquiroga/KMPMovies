@@ -24,7 +24,10 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.jquiroga.kmpmovies.data.Movie
 import com.jquiroga.kmpmovies.ui.commom.LoadingIndicator
+import com.jquiroga.kmpmovies.ui.commom.PermissionRequestEffect
 import com.jquiroga.kmpmovies.ui.screens.Screen
+import dev.icerock.moko.permissions.Permission
+import dev.icerock.moko.permissions.location.COARSE_LOCATION
 import kmpmovies.shared.generated.resources.Res
 import kmpmovies.shared.generated.resources.app_name
 import org.jetbrains.compose.resources.stringResource
@@ -36,6 +39,10 @@ fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel()
 ) {
     val state = viewModel.state
+
+    PermissionRequestEffect(Permission.COARSE_LOCATION) {
+        viewModel.onUiReady()
+    }
 
     Screen {
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
