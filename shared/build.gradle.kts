@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
     alias(libs.plugins.buildConfig)
+    alias(libs.plugins.skie)
 }
 
 kotlin {
@@ -92,6 +93,12 @@ buildConfig {
     val apiKey = properties.getProperty("API_KEY")
 
     buildConfigField("API_KEY", apiKey)
+}
+
+skie {
+    features {
+        enableSwiftUIObservingPreview = true
+    }
 }
 
 dependencies {

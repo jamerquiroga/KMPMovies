@@ -1,8 +1,5 @@
 package com.jquiroga.kmpmovies.ui.screens.detail
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jquiroga.kmpmovies.data.MovieDetail
@@ -11,12 +8,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class DetailViewModel(
-    private val movieId: Int,
-    private val movieRepository: MovieRepository
-) : ViewModel() {
+class DetailViewModel(private val movieId: Int) : ViewModel(), KoinComponent {
 
+    private val movieRepository: MovieRepository by inject()
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 

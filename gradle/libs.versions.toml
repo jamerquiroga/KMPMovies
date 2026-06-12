@@ -25,6 +25,7 @@ buildConfig = "6.0.10"
 koin = "4.2.1"
 moko-permissions = "0.20.1"
 playServicesLocation = "21.3.0"
+skie = "0.10.12"
 
 [libraries]
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilNetworkKtor3" }
@@ -76,3 +77,4 @@ kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", versio
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
 buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig" }
+skie = { id = "co.touchlab.skie", version.ref = "skie" }
