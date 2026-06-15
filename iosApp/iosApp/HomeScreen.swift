@@ -3,28 +3,32 @@ import Shared
 
 extension Movie: @retroactive Identifiable {}
 
-struct HomeScreen2: View {
+struct HomeScreen: View {
     var viewModel = HomeViewModel()
     
     var body: some View {
-        Observing(viewModel.state) { state in
-            if (state.loading) {
-                ProgressView().progressViewStyle(CircularProgressViewStyle())
-            } else {
-                if (!state.movies.isEmpty) {
-                    let columns = [GridItem(.adaptive(minimum: 100))]
-                    
-                    ScrollView {
-                        LazyVGrid(columns: columns) {
-                            ForEach(state.movies) { movie in
-                                MovieItemView(movie: movie)
-                            }
-                        }.padding(.horizontal)
-                    }
+        NavigationView {
+            Observing(viewModel.state) { state in
+                if (state.loading) {
+                    ProgressView().progressViewStyle(CircularProgressViewStyle())
                 } else {
-                    Text("No hay películas")
+                    if (!state.movies.isEmpty) {
+                        let columns = [GridItem(.adaptive(minimum: 100))]
+                        
+                        ScrollView {
+                            LazyVGrid(columns: columns) {
+                                ForEach(state.movies) { movie in
+                                    NavigationLink(destination: DetailScreen(movieId: movie.id)) {
+                                        MovieItemView(movie: movie)
+                                    }
+                                }
+                            }.padding(.horizontal)
+                        }
+                    } else {
+                        Text("No hay películas")
+                    }
                 }
-            }
+            }.navigationTitle("KMP Movies")
         }.onAppear {
             viewModel.onUiReady()
         }
